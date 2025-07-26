@@ -1,22 +1,115 @@
 {
   "metadata": {
-    "input_documents": [{"filename": "South of France - Cities.pdf"}, {"filename": "South of France - Cuisine.pdf"}, {"filename": "South of France - History.pdf"}, {"filename": "South of France - Restaurants and Hotels.pdf"}, {"filename": "South of France - Things to Do.pdf"}, {"filename": "South of France - Tips and Tricks.pdf"}, {"filename": "South of France - Traditions and Culture.pdf"}],
-    "persona": {"role": "Travel Planner", "expertise": ""},
-    "job_to_be_done": {"task": "Plan a trip of 4 days for a group of 10 college friends.", "context": ""},
-    "processing_timestamp": "2025-07-26T16:48:06.807083+00:00"
+    "input_documents": [
+      {
+        "filename": "South of France - Cities.pdf"
+      },
+      {
+        "filename": "South of France - Cuisine.pdf"
+      },
+      {
+        "filename": "South of France - History.pdf"
+      },
+      {
+        "filename": "South of France - Restaurants and Hotels.pdf"
+      },
+      {
+        "filename": "South of France - Things to Do.pdf"
+      },
+      {
+        "filename": "South of France - Tips and Tricks.pdf"
+      },
+      {
+        "filename": "South of France - Traditions and Culture.pdf"
+      }
+    ],
+    "persona": {
+      "role": "Travel Planner",
+      "expertise": ""
+    },
+    "job_to_be_done": {
+      "task": "Plan a trip of 4 days for a group of 10 college friends.",
+      "context": ""
+    },
+    "processing_timestamp": "2025-07-26T18:08:14Z"
   },
   "extracted_sections": [
-    {"document": "South of France - Tips and Tricks.pdf", "page_number": 7, "section_title": "Comfortable Shoes: Wear comfortable walking shoes for exploring cities.", "importance_rank": 1},
-    {"document": "South of France - Restaurants and Hotels.pdf", "page_number": 1, "section_title": "Comprehensive Guide to Restaurants and Hotels in the South of France", "importance_rank": 2},
-    {"document": "South of France - Cities.pdf", "page_number": 2, "section_title": "Transportation : The region is well-connected by an extensive network of trains,", "importance_rank": 3},
-    {"document": "South of France - History.pdf", "page_number": 6, "section_title": "Basilica of Saints Nazarius and Celsus : This Gothic-Romanesque basilica, located", "importance_rank": 4},
-    {"document": "South of France - Things to Do.pdf", "page_number": 9, "section_title": "Theme Parks and Attractions", "importance_rank": 5}
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "page_number": 5,
+      "section_title": "Consider bringing a portable Wi-Fi hotspot for reliable",
+      "importance_rank": 1
+    },
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "page_number": 9,
+      "section_title": "Conclusion Packing for a trip to the South of France involves considering the se",
+      "importance_rank": 2
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "page_number": 1,
+      "section_title": "Comprehensive Guide to Major Cities in the South of France Introduction The Sout",
+      "importance_rank": 3
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "page_number": 5,
+      "section_title": "Nice: The Jewel of the French Riviera History Nice, located on the French Rivier",
+      "importance_rank": 4
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "page_number": 1,
+      "section_title": "A Culinary Journey Through the South of France Introduction The South of France,",
+      "importance_rank": 5
+    }
   ],
   "subsection_analysis": [
-    {"document": "South of France - Tips and Tricks.pdf", "refined_text": "using public transportation to explore cities eﬃciently.", "page_number": 7, "page_number_constraints": {"start": 7, "end": 7}},
-    {"document": "South of France - Restaurants and Hotels.pdf", "refined_text": "The South of France, known for its stunning landscapes, rich cultural heritage, and exquisite cuisine, is a dream destination for travelers. From the glamorous beaches of the French Riviera to the charming villages of Provence, this region oﬀers a diverse array of experiences. Whether you're looking for budget-friendly options, family-friendly spots, upscale dining, or luxurious experiences, this guide will help you find the perfect restaurants and hotels for your trip.", "page_number": 1, "page_number_constraints": {"start": 1, "end": 1}},
-    {"document": "South of France - Cities.pdf", "refined_text": "Learning a few basic French phrases can enhance your travel experience.", "page_number": 2, "page_number_constraints": {"start": 2, "end": 2}},
-    {"document": "South of France - History.pdf", "refined_text": "allowing defenders to shoot arrows and drop projectiles on attackers below 10 .", "page_number": 6, "page_number_constraints": {"start": 6, "end": 6}},
-    {"document": "South of France - Things to Do.pdf", "refined_text": "Antibes: Visit Marineland for marine shows and an aquarium. Fréjus: Cool oﬀ at Aqualand water park. Villeneuve-Loubet: Enjoy quirky attractions at Le Village des Fous.", "page_number": 9, "page_number_constraints": {"start": 9, "end": 9}}
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "refined_text": "• Additional Tips: Download maps and travel guides to your devices for offline use. Consider bringing a portable Wi-Fi hotspot for reliable internet access.",
+      "page_number": 5,
+      "page_number_constraints": {
+        "start": 5,
+        "end": 5
+      }
+    },
+    {
+      "document": "South of France - Tips and Tricks.pdf",
+      "refined_text": "Conclusion Packing for a trip to the South of France involves considering the season, planned activities, and the needs of both adults and children.",
+      "page_number": 9,
+      "page_number_constraints": {
+        "start": 9,
+        "end": 9
+      }
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "refined_text": "Comprehensive Guide to Major Cities in the South of France Introduction The South of France, known for its stunning landscapes, Mediterranean coastline, and rich cultural heritage, is home to some of the most beautiful and historically significant cities in the country.",
+      "page_number": 1,
+      "page_number_constraints": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    {
+      "document": "South of France - Cities.pdf",
+      "refined_text": "Nice: The Jewel of the French Riviera History Nice, located on the French Riviera, has been a popular destination for centuries. Its history dates back to the ancient Greeks, who founded the city around 350 BC. Nice later became a Roman colony and has since evolved into a glamorous resort town. In the 19th century, Nice became a favorite winter retreat for European aristocrats, which contributed to its development as a luxurious destination.",
+      "page_number": 5,
+      "page_number_constraints": {
+        "start": 5,
+        "end": 5
+      }
+    },
+    {
+      "document": "South of France - Cuisine.pdf",
+      "refined_text": "A Culinary Journey Through the South of France Introduction The South of France, known for its stunning landscapes and charming villages, is also a paradise for food lovers.",
+      "page_number": 1,
+      "page_number_constraints": {
+        "start": 1,
+        "end": 1
+      }
+    }
   ]
 }

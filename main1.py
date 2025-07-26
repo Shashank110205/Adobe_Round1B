@@ -8,9 +8,9 @@ from nltk.tokenize import sent_tokenize
 # import nltk
 # nltk.download('punkt')
 
-from model_utils_e5 import get_embedding_e5, cosine_similarity
-from pdf_utils import extract_chunks_by_headings
-from scoring_utils import (
+from utils.model_utils_e5 import get_embedding_e5, cosine_similarity
+from utils.pdf_utils import extract_chunks_by_headings
+from utils.scoring_utils import (
     extract_keywords,
     keyword_match_score,
     compute_final_score

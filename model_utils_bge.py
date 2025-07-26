@@ -21,9 +21,9 @@ def get_embedding_bge(text: str, instruction: str = None) -> np.ndarray:
 
     max_len = 512
     input_ids = tokens.ids[:max_len]
-    input_ids += [0] * (max_len - len(input_ids))
-
-    attention_mask = [1 if i < len(tokens.ids[:max_len]) else 0 for i in range(max_len)]
+    pad_len = max_len - len(input_ids)
+    input_ids += [0] * pad_len
+    attention_mask = [1] * len(tokens.ids[:max_len]) + [0] * pad_len
 
     input_ids = np.array([input_ids], dtype=np.int64)
     attention_mask = np.array([attention_mask], dtype=np.int64)
@@ -34,6 +34,7 @@ def get_embedding_bge(text: str, instruction: str = None) -> np.ndarray:
     })
 
     return np.mean(outputs[0][0], axis=0)
+
 
 def get_combined_similarity(text1: str, text2: str) -> float:
     emb1 = get_embedding_bge(text1)

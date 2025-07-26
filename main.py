@@ -7,7 +7,14 @@ from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 from optimized_util.embedding_generator import EmbeddingGenerator
 from optimized_util.pdf_processor import extract_chunks
-from optimized_util.text_utils import refine_text, extract_keywords, keyword_match_score, generate_contextual_title,calculate_cosine_similarity
+from optimized_util.text_utils import (
+    refine_text, 
+    extract_keywords, 
+    keyword_match_score, 
+    generate_contextual_title,
+    generate_dynamic_keywords,
+    calculate_cosine_similarity
+)
 from optimized_util.output_builder import build_output
 
 # Configuration
@@ -18,7 +25,7 @@ PDF_FOLDER = "pdf"
 MIN_CHUNK_LENGTH = 100
 
 def process_document(doc: dict) -> list:
-    """Process any document type with adaptive extraction"""
+    """Process a single document with enhanced PDF extraction"""
     filepath = os.path.join(PDF_FOLDER, doc["filename"])
     try:
         chunks = extract_chunks(filepath)
@@ -56,6 +63,12 @@ def main():
     # Prepare query
     query_text = f"{persona}. Task: {job}"
     query_keywords = extract_keywords(query_text)
+    
+    # Generate dynamic keywords based on persona and job
+    dynamic_keywords = generate_dynamic_keywords(persona, job, embedder)
+    print(f"🔑 Generated dynamic keywords: {', '.join(dynamic_keywords)}")
+    
+    # Get query embedding
     query_embedding = embedder.get_embedding(query_text, "query:").flatten()
     
     # Parallel document processing
@@ -87,17 +100,21 @@ def main():
         texts_to_embed = [chunk["refined_text"] for chunk in chunks_to_embed]
         chunk_embeddings = embedder.get_embeddings_batch(texts_to_embed, "passage:")
         
-        # Replace the similarity calculation line:
         for chunk, embedding in zip(chunks_to_embed, chunk_embeddings):
-            # Ensure embedding is 1-dimensional
-            flat_embedding = embedding.flatten()
-            similarity = calculate_cosine_similarity(query_embedding, flat_embedding)
+            similarity = calculate_cosine_similarity(query_embedding, embedding)
             chunk["similarity"] = max(similarity, 0.0)
     
-    # Calculate final scores with contextual boosting
+    # Calculate final scores
     for chunk in all_chunks:
         similarity = chunk.get("similarity", chunk["match_score"] * 0.5)
         chunk["final_score"] = (similarity * 0.7) + (chunk["match_score"] * 0.3)
+        
+        # Apply dynamic keyword boosting
+        text = chunk["refined_text"].lower()
+        matches = sum(1 for kw in dynamic_keywords if kw in text)
+        if matches > 0:
+            boost_factor = 1 + (0.1 * matches)  # 10% per match
+            chunk["final_score"] *= min(boost_factor, 1.5)  # Cap at 50% boost
         
         # Generate contextual title
         chunk["section_title"] = generate_contextual_title(

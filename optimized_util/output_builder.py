@@ -3,7 +3,7 @@ import re
 import os
 
 def build_output(input_data: dict, top_chunks: list, timestamp: str) -> dict:
-    """Build output structure that adapts to any context"""
+    """Build output structure with enhanced formatting"""
     # Build metadata
     metadata = {
         "input_documents": [{"filename": doc["filename"]} for doc in input_data["documents"]],
@@ -15,7 +15,9 @@ def build_output(input_data: dict, top_chunks: list, timestamp: str) -> dict:
             "task": input_data["job_to_be_done"]["task"],
             "context": input_data["job_to_be_done"].get("context", "")
         },
-        "processing_timestamp": timestamp
+        "processing_timestamp": timestamp,
+        "system_version": "PersonaAI 1.3",
+        "optimization_level": "high"
     }
     
     # Build sections

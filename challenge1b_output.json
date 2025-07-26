@@ -31,13 +31,15 @@
       "task": "Plan a trip of 4 days for a group of 10 college friends.",
       "context": ""
     },
-    "processing_timestamp": "2025-07-26T18:08:14Z"
+    "processing_timestamp": "2025-07-26T18:33:47Z",
+    "system_version": "PersonaAI 1.3",
+    "optimization_level": "high"
   },
   "extracted_sections": [
     {
       "document": "South of France - Tips and Tricks.pdf",
-      "page_number": 5,
-      "section_title": "Consider bringing a portable Wi-Fi hotspot for reliable",
+      "page_number": 1,
+      "section_title": "The Ultimate South of France Travel Companion: Your Comprehensive Guide to Packi",
       "importance_rank": 1
     },
     {
@@ -47,9 +49,9 @@
       "importance_rank": 2
     },
     {
-      "document": "South of France - Cities.pdf",
+      "document": "South of France - Restaurants and Hotels.pdf",
       "page_number": 1,
-      "section_title": "Comprehensive Guide to Major Cities in the South of France Introduction The Sout",
+      "section_title": "Comprehensive Guide to Restaurants and Hotels in the South of France Introductio",
       "importance_rank": 3
     },
     {
@@ -59,20 +61,20 @@
       "importance_rank": 4
     },
     {
-      "document": "South of France - Cuisine.pdf",
-      "page_number": 1,
-      "section_title": "A Culinary Journey Through the South of France Introduction The South of France,",
+      "document": "South of France - Cities.pdf",
+      "page_number": 7,
+      "section_title": "Avignon: The City of Popes History Avignon, located on the banks of the Rhne Ri",
       "importance_rank": 5
     }
   ],
   "subsection_analysis": [
     {
       "document": "South of France - Tips and Tricks.pdf",
-      "refined_text": "• Additional Tips: Download maps and travel guides to your devices for offline use. Consider bringing a portable Wi-Fi hotspot for reliable internet access.",
-      "page_number": 5,
+      "refined_text": "The Ultimate South of France Travel Companion: Your Comprehensive Guide to Packing, Planning, and Exploring Introduction Planning a trip to the South of France requires thoughtful preparation to ensure a comfortable and enjoyable experience. This guide covers everything from packing essentials to travel tips, catering to all seasons and various activities.",
+      "page_number": 1,
       "page_number_constraints": {
-        "start": 5,
-        "end": 5
+        "start": 1,
+        "end": 1
       }
     },
     {
@@ -85,8 +87,8 @@
       }
     },
     {
-      "document": "South of France - Cities.pdf",
-      "refined_text": "Comprehensive Guide to Major Cities in the South of France Introduction The South of France, known for its stunning landscapes, Mediterranean coastline, and rich cultural heritage, is home to some of the most beautiful and historically significant cities in the country.",
+      "document": "South of France - Restaurants and Hotels.pdf",
+      "refined_text": "Comprehensive Guide to Restaurants and Hotels in the South of France Introduction The South of France, known for its stunning landscapes, rich cultural heritage, and exquisite cuisine, is a dream destination for travelers. From the glamorous beaches of the French Riviera to the charming villages of Provence, this region offers a diverse array of experiences.",
       "page_number": 1,
       "page_number_constraints": {
         "start": 1,
@@ -103,12 +105,12 @@
       }
     },
     {
-      "document": "South of France - Cuisine.pdf",
-      "refined_text": "A Culinary Journey Through the South of France Introduction The South of France, known for its stunning landscapes and charming villages, is also a paradise for food lovers.",
-      "page_number": 1,
+      "document": "South of France - Cities.pdf",
+      "refined_text": "Avignon: The City of Popes History Avignon, located on the banks of the Rhône River, is best known for its role as the seat of the papacy in the 14th century. The city was home to seven popes during this period, leaving a lasting legacy of impressive architecture and cultural heritage.",
+      "page_number": 7,
       "page_number_constraints": {
-        "start": 1,
-        "end": 1
+        "start": 7,
+        "end": 7
       }
     }
   ]

@@ -2,8 +2,29 @@ import re
 import numpy as np
 from collections import defaultdict
 
-# Remove the problematic import
-# We'll handle embeddings through dependency injection instead
+# Universal vocabulary for semantic expansion
+UNIVERSAL_VOCABULARY = {
+    # General terms
+    "analysis", "evaluation", "assessment", "plan", "method", "solution",
+    "review", "comparison", "implementation", "performance", "design",
+    
+    # Travel domain
+    "itinerary", "accommodation", "transport", "attraction", "reservation",
+    "booking", "destination", "itineraries", "schedule", "duration",
+    "sightseeing", "lodging", "budget", "group", "activity", "tour",
+    
+    # Academic domain
+    "methodology", "experiment", "result", "finding", "citation",
+    "hypothesis", "data", "theory", "concept", "literature",
+    
+    # Business domain
+    "revenue", "growth", "market", "competition", "strategy",
+    "investment", "financial", "trend", "forecast", "positioning",
+    
+    # Technical domain
+    "system", "technology", "model", "framework", "architecture",
+    "algorithm", "process", "development", "optimization"
+}
 
 def refine_text(text: str, max_length: int = 300) -> str:
     """Extract meaningful content adaptive to context"""
@@ -64,11 +85,6 @@ def keyword_match_score(text: str, keywords: list) -> float:
     matches = text_words & set(keywords)
     return min(len(matches) / len(keywords), 1.0)
 
-def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
-    """Calculate cosine similarity between two vectors"""
-    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
-
-
 def calculate_cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
     """Calculate cosine similarity safely and return a float"""
     # Ensure vectors are 1-dimensional
@@ -85,7 +101,6 @@ def calculate_cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float:
         
     return float(dot_product / norm_product)
 
-# Modified to accept embedder instance
 def generate_contextual_title(text: str, query_keywords: list, original_title: str, embedder) -> str:
     """Generate context-aware title using semantic analysis"""
     # Use original title if it's meaningful
@@ -102,7 +117,10 @@ def generate_contextual_title(text: str, query_keywords: list, original_title: s
     for keyword in query_keywords:
         keyword_embeddings.append(embedder.get_embedding(keyword, "query:"))
     
-    avg_keyword_embedding = np.mean(keyword_embeddings, axis=0) if keyword_embeddings else None
+    if keyword_embeddings:
+        avg_keyword_embedding = np.mean(keyword_embeddings, axis=0)
+    else:
+        avg_keyword_embedding = None
     
     # Find best matching phrase
     best_phrase = ""
@@ -114,8 +132,9 @@ def generate_contextual_title(text: str, query_keywords: list, original_title: s
             
         # Calculate relevance score
         phrase_embedding = embedder.get_embedding(phrase, "query:")
+        
         if avg_keyword_embedding is not None:
-            semantic_score = cosine_similarity(avg_keyword_embedding, phrase_embedding)
+            semantic_score = calculate_cosine_similarity(avg_keyword_embedding, phrase_embedding)
         else:
             semantic_score = 0
             
@@ -140,3 +159,36 @@ def generate_contextual_title(text: str, query_keywords: list, original_title: s
         return phrases[0].strip()[:80]
     else:
         return "Key Information"
+
+def generate_dynamic_keywords(persona: str, job: str, embedder, similarity_threshold=0.6) -> set:
+    """Generate context-aware keywords using semantic expansion"""
+    # Extract base keywords
+    base_keywords = set(extract_keywords(f"{persona} {job}"))
+    expanded_keywords = set(base_keywords)
+    
+    # Get embeddings for base keywords
+    base_embeddings = {}
+    for keyword in base_keywords:
+        base_embeddings[keyword] = embedder.get_embedding(keyword, "query:").flatten()
+    
+    # Get embeddings for universal vocabulary
+    vocab_embeddings = {}
+    for term in UNIVERSAL_VOCABULARY:
+        vocab_embeddings[term] = embedder.get_embedding(term, "query:").flatten()
+    
+    # Expand each base keyword
+    for keyword, k_embed in base_embeddings.items():
+        similar_terms = []
+        
+        # Find similar terms in vocabulary
+        for term, t_embed in vocab_embeddings.items():
+            similarity = calculate_cosine_similarity(k_embed, t_embed)
+            if similarity > similarity_threshold:
+                similar_terms.append((term, similarity))
+        
+        # Sort and select top matches
+        similar_terms.sort(key=lambda x: x[1], reverse=True)
+        for term, _ in similar_terms[:3]:  # Top 3 matches
+            expanded_keywords.add(term)
+    
+    return expanded_keywords

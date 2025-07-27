@@ -61,3 +61,39 @@ A solution to extract and rank the most relevant PDF sections for a given **pers
 
 ## 🗂️ Folder Structure
 
+.
+├── main.py # Optimized pipeline using ONNX
+├── main1.py # NLTK-based simpler baseline version
+├── input.json # Input with persona, task, and documents
+├── challenge1b_output.json # Final structured output
+├── optimized_util/ # Optimized embedding, PDF, scoring utilities
+│ ├── embedding_generator.py
+│ ├── output_builder.py
+│ ├── pdf_processor.py
+│ └── text_utils.py
+├── utils/ # Simpler utilities for main1.py
+├── tokenizer/ # Tokenizer JSON for ONNX model
+├── pdf/ # Folder containing input PDF files
+└── README.md # This file
+
+
+
+---
+
+## ⚙️ Setup Instructions
+
+```bash
+# Install required packages
+pip install onnxruntime tokenizers numpy PyMuPDF nltk
+
+
+
+---
+
+## ⚙️ Setup Instructions
+
+```bash
+# Install required packages
+pip install onnxruntime tokenizers numpy PyMuPDF nltk
+
+

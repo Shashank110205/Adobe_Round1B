@@ -1,0 +1,23 @@
+services:
+  pdf-processor:
+    platform: linux/amd64
+    build: .
+    container_name: pdf-processor
+    volumes:
+      - ./input:/app/input  # Single volume mount for both input and output
+    environment:
+      - INPUT_DIR=/app/input
+      - MAX_DOCUMENTS=10
+      - MAX_TOP_CHUNKS=5
+      - MAX_THREADS=4
+      - MIN_CHUNK_LENGTH=100
+    network_mode: "none"  # No network access as per challenge requirements
+
+    deploy:
+      resources:
+        limits:
+          cpus: '8'
+          memory: '16G'
+        reservations:
+          cpus: '4'
+          memory: '8G'

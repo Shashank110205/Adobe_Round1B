@@ -75,25 +75,6 @@ A solution to extract and rank the most relevant PDF sections for a given **pers
 ├── tokenizer/ # Tokenizer JSON for ONNX model
 ├── pdf/ # Folder containing input PDF files
 └── README.md # This file
-
-
-
----
-
-## ⚙️ Setup Instructions
-
-```bash
-# Install required packages
-pip install onnxruntime tokenizers numpy PyMuPDF nltk
-
-
-
----
-
-## ⚙️ Setup Instructions
-
-```bash
-# Install required packages
-pip install onnxruntime tokenizers numpy PyMuPDF nltk
+'''
 
 

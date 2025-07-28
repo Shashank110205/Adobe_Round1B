@@ -12,6 +12,7 @@ A solution to extract and rank the most relevant PDF sections for a given **pers
 
 ## Team
 Name : InnovationNation 
+
 Members : 
 - [Shashank Tiwari](https://github.com/Shashank110205)
 - [Badal Singh](https://github.com/Badalsingh2)

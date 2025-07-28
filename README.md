@@ -22,7 +22,7 @@ Members :
 
 ## 🚀 Features
 
-- 🔹 **E5-Small-V2 ONNX** model for efficient, offline-compatible embeddings
+- 🔹 **E5-Small-V2 ONNX** *(120MiB)* model for efficient, offline-compatible embeddings
 - 🔹 **Dynamic keyword expansion** using a universal vocabulary
 - 🔹 **Robust heading-based chunking** using font and spacing logic
 - 🔹 **Caching & batching** for speed and performance

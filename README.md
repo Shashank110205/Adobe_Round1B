@@ -10,6 +10,15 @@ A solution to extract and rank the most relevant PDF sections for a given **pers
 
 ---
 
+## Team
+Name : InnovationNation 
+Members : 
+- [Shashank Tiwari](https://github.com/Shashank110205)
+- [Badal Singh](https://github.com/Badalsingh2)
+- [Vivian Ludrick](https://github.com/vivalchemy)
+
+---
+
 ## 🚀 Features
 
 - 🔹 **E5-Small-V2 ONNX** model for efficient, offline-compatible embeddings

@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the application code
 COPY . .
 
-RUN python scripts/export_e5_to_onnx.py
+RUN python export_e5_to_onnx.py
 
 RUN mkdir -p /app/input
 

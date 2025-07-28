@@ -77,4 +77,49 @@ A solution to extract and rank the most relevant PDF sections for a given **pers
 └── README.md # This file
 ```
 
+---
 
+## 📥 Installation Steps:
+
+1. Clone the git repository
+    ```bash
+    git clone git@github.com:Shashank110205/Adobe_Round1B.git
+    ```
+
+2. Move into the repository folder
+    ```bash
+    cd Adobe_Round1B
+    ```
+
+3. Build the docker image(requires internet connection)
+    ```bash
+    docker compose build
+    ```
+
+    or build the image manually
+
+    ```bash
+    docker build -t pdf-processor .
+    ```
+
+4. Run the docker image(works offline)
+    ```bash
+    docker run -it --rm \
+      --name pdf-processor \
+      -v "<path_to_the_input_directory>:/app/input" \
+      pdf-processor
+    ```
+
+>[!NOTE]
+> The structure of the input directory should be as follows:
+>```
+> .
+> ├── challenge1b_input.json
+> ├── challenge1b_output.json
+> └── PDFs
+>     ├── pdf1.pdf
+>     ├── pdf2.pdf
+>     ├── pdf3.pdf
+>     ├── ...
+>     ├── pdf16.pdf
+> ```
